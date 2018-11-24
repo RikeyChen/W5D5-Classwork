@@ -38,6 +38,17 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
 }
 
 innerBubbleSortLoop([5,3,1], 0, false, () => console.log("In outer bubble sort."));
-// function absurdBubbleSort(arr, sortCompletionCallback) {
-//
-// }
+
+function bubbleSort(array, func) {
+  if (!func) {
+    func = (a, b) => a > b ? 1 : -1;
+  }
+  for (var i = 0; i < array.length; i++) {
+    for (var j = i + 1; j < array.length; j++) {
+      if (func(array[i], array[j]) === 1) {
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+  }
+  return array;
+}
